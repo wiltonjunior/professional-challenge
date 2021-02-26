@@ -1,0 +1,59 @@
+{
+  "name": "professional-challenge",
+  "version": "1.0.0",
+  "description": "professional-challenge",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "jest",
+    "commit": "cz",
+    "lint": "eslint src/",
+    "prd": "node src/server.js",
+    "start": "nodemon src/server.js",
+    "db:create": "sequelize db:create",
+    "db:migrate": "sequelize db:migrate",
+    "db:populate": "sequelize db:seed:all",
+    "db:undo": "sequelize db:migrate:undo:all",
+    "db:reset": "npm run db:undo && npm run db:migrate && npm run db:populate"
+  },
+  "repository": "https://github.com/wiltonjunior/professional-challenge.git",
+  "author": "wiltonjunior2010@gmail.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "4.17.1",
+    "generate-password": "^1.6.0",
+    "helmet": "4.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "4.17.20",
+    "pg": "^8.5.1",
+    "sequelize": "6.3.5"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "7.10.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jest": "24.1.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "husky": "4.3.0",
+    "jest": "26.5.2",
+    "lint-staged": "10.4.0",
+    "nodemon": "2.0.4",
+    "prettier": "2.1.2",
+    "sequelize-cli": "6.2.0"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint . --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
