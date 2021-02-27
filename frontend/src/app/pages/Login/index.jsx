@@ -35,7 +35,7 @@ function Login() {
 
 	const onSuccess = ({ data }) => {
 		setToken(data)
-		history.push(`${baseUrl}/`)
+		history.push(`/professional`)
 	}
 
 	const setToken = token => {

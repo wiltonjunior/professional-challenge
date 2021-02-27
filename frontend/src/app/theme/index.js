@@ -44,6 +44,7 @@ const theme = createMuiTheme({
     MuiButton: {
       text: {
         color: palette.text.white,
+        textTransform: 'capitalize',
         background: palette.primary.main,
         fontFamily: typography.fontSemibold,
         '&:hover': {

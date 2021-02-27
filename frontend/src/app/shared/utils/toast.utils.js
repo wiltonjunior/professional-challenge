@@ -2,7 +2,6 @@ import React from 'react'
 
 import { toast } from 'react-toastify'
 
-import Image from '@UI/Image'
 import Translate from '@UI/Translate'
 
 class ToastUtils {
