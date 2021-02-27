@@ -6,9 +6,10 @@ import IconButton from '@material-ui/core/IconButton'
 import Axios from '@UI/Axios'
 import Icon from '@UI/Icon'
 import Table from '@UI/Table'
-import {i18n} from '@UI/Translate'
+import { i18n } from '@UI/Translate'
 
 const List = ({ list = [], setItem, updateList }) => {
+
   const columns = [
     { title: 'PROFESSIONAL_LIST_NAME', field: 'name' },
     { title: 'PROFESSIONAL_LIST_EMAIL', field: 'email' },
@@ -28,13 +29,13 @@ const List = ({ list = [], setItem, updateList }) => {
       component: item => {
         return (
           <>
-            <IconButton onClick={() => setItem(item)} className="list-edit">
+            <IconButton onClick={() => setItem({ ...item })} className="list-edit">
               <Icon size={30} name="Edit" />
             </IconButton>
             <Axios
               api="professional"
               method="delete"
-              others={item._id}
+              others={item.id}
               onSuccess={updateList}
             >
               {({ submit }) => (

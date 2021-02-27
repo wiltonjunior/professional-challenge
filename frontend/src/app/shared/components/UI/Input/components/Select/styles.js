@@ -10,6 +10,7 @@ export default makeStyles(({ palette, typography }) => ({
     },
     '& .MuiFormHelperText-root': {
       color: 'red',
+      right: '0px !important',
     },
   },
 }))

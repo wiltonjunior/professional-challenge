@@ -37,14 +37,8 @@ const theme = createMuiTheme({
   typography,
   overrides: {
     MuiButton: {
-      text: {
-        color: palette.text.white,
-        textTransform: 'capitalize',
-        background: palette.primary.main,
-        fontFamily: typography.fontSemibold,
-        '&:hover': {
-          background: palette.primary.strong,
-        },
+      root: {
+        textTransform: 'capitalize'
       },
       outlined: {
         color: palette.primary.main,

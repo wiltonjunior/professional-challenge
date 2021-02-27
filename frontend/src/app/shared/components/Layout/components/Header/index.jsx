@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 
 import Typography from '@UI/Typography'
 
@@ -11,7 +9,6 @@ import useStyles from './styles.js'
 
 export default function Header(props) {
   const classes = useStyles()
-  const history = useHistory()
 
   const [title, setTitle] = useState('')
 
@@ -21,9 +18,9 @@ export default function Header(props) {
     setTitle(`router_${value}`.toUpperCase())
   }, [props.location])
 
-  const goTo = (link) => {
-    history.push(link)
-  }
+  const object = props.user() || {}
+
+  const { user = {} } = object;
 
   return (
     <div className={classes.root}>
@@ -32,9 +29,10 @@ export default function Header(props) {
           <div className={classes.title}>
             <Typography>{title}</Typography>
           </div>
-          <Button onClick={() => goTo('/login')} color="inherit">
-            <Typography>HEADER_LOGOUT</Typography>
-          </Button>
+          <div className={classes.info}>
+            <p>{user.name}</p>
+            <p>{user.email}</p>
+          </div>
         </Toolbar>
       </AppBar>
     </div>

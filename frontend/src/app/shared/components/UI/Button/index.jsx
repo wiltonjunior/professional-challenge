@@ -12,7 +12,7 @@ import useStyles from './styles.js'
 
 const ButtonComponent = (props) => {
   const classes = useStyles()
-  const { loading, className, basic, href, ...rest } = props
+  const { loading, className, basic, href, color="primary", variant="contained", ...rest } = props
 
   const styles = classNames([classes.root, className], { basic })
 
@@ -29,7 +29,7 @@ const ButtonComponent = (props) => {
   const component = (event) => {
     return (
       <div className={styles}>
-        <Button disabled={loading} {...event} className={classes.button} >
+        <Button variant={variant} color={color} disabled={loading} {...event} className={classes.button} >
           {icon()}
           <Translate>{props.children}</Translate>
         </Button>

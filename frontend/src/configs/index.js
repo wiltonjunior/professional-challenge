@@ -6,6 +6,9 @@ export default {
       },
       professional: {
         url: 'professional',
+      },
+      'type-professional': {
+        url: 'type-professional',
       }
     },
   },

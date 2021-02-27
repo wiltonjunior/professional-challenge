@@ -9,5 +9,17 @@ export default makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  info: {
+    '& p': {
+      margin: 0,
+      textAlign: 'right',
+      '&:first-child': {
+        fontSize: 18
+      },
+      '&:last-child': {
+        fontSize: 12
+      }
+    }
   }
 }))

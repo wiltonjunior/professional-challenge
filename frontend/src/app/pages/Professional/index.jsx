@@ -15,6 +15,7 @@ function Professional() {
 	const [run, setRun] = useState(1)
 	const [list, setList] = useState([])
 	const [item, setItem] = useState({})
+	const [listType, setListType] = useState([])
 
 	const onSuccess = ({ data }) => {
 		setItem({})
@@ -25,17 +26,23 @@ function Professional() {
 		setRun(run + 1)
 	}
 
+	const onSuccessType = ({ data }) => {
+		setListType([...data])
+	}
+
 	const tabs = [
 		{
 			icon: "List",
 			title: "PROFESSIONAL_TABS_LIST",
-			component: () => <List list={list} setItem={setItem} updateList={updateList} />
+			content: <List list={list} setItem={setItem} updateList={updateList} />
 		},
 		{
 			icon: "AddIcon",
 			title: "PROFESSIONAL_TABS_ADD",
-			component: () => <AddEdit
+			content: <AddEdit
 				item={item}
+				setItem={setItem}
+				listType={listType}
 				updateList={updateList}
 				close={() => setItem({})}
 			/>
@@ -44,8 +51,10 @@ function Professional() {
 
 	return (
 		<section className={classes.root}>
-			<Axios run={run} api="professional" onSuccess={onSuccess}>
-				<Tabs tabs={tabs} />
+			<Axios run api="type-professional" onSuccess={onSuccessType}>
+				<Axios run={run} api="professional" onSuccess={onSuccess}>
+					<Tabs tabs={tabs} />
+				</Axios>
 			</Axios>
 		</section>
 	);

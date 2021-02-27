@@ -11,8 +11,6 @@ import useStyles from './styles'
 const Toolbar = ({ selected, component, title, search }) => {
   const classes = useStyles()
 
-  const length = selected?.length
-
   let [value, setValue] = useState('')
   const onChange = event => {
     setValue(event.target.value)
@@ -28,7 +26,7 @@ const Toolbar = ({ selected, component, title, search }) => {
           value={value}
           variant="outlined"
           onChange={onChange}
-          label="Search"
+          label="Pesquisa"
           size="small"
           InputProps={{
             endAdornment: (

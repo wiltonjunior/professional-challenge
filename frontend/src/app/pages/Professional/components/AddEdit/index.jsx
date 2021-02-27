@@ -10,19 +10,23 @@ import Button from '@UI/Button'
 import FormGroup from './components/FormGroup'
 
 const AddEdit = props => {
-  let { close, item, updateList } = props
+
+  let { close, item, setItem, updateList } = props
   
   const schema = {
     enableReinitialize: true,
-    initialValues: { ...item },
+    initialValues: { situation: false, ...item },
     validationSchema: Yup.object().shape({
-      question: Yup.string().required('REQUIRED'),
-      answer: Yup.string().required('REQUIRED')
+      name: Yup.string().required('REQUIRED'),
+      phone: Yup.string().required('REQUIRED'),
+      password: Yup.string().required('REQUIRED'),
+      typeProfessionalId: Yup.number().required('REQUIRED'),
+      email: Yup.string().email('REQUIRED').required('REQUIRED'),
     })
   }
 
   const footer = submit => {
-    return <Button onClick={submit}>FAQ_ADD_CARD_SEND</Button>
+    return <Button onClick={submit}>PROFESSIONAL_ADD_CARD_SEND</Button>
   }
 
   const onSuccess = () => {
@@ -43,30 +47,20 @@ const AddEdit = props => {
       <Modal
         open={item}
         close={close}
-        title="FAQ_EDIT_MODAL_TILE"
-        actions={<Actions onSubmit={handleSubmit} />}
+        onSubmit={handleSubmit}
+        title="PROFESSIONAL_EDIT_MODAL_TILE"
       >
         <FormGroup {...props} formik={formik} />
       </Modal>
     )
   }
 
-  const Actions = ({ onSubmit }) => {
-    return (
-      <div className="actions">
-        <Button color="gray" onClick={() => close()}>
-          FAQ_BUTTON_CLOSE
-        </Button>
-        <Button onClick={onSubmit}>FAQ_ADD_CARD_SEND</Button>
-      </div>
-    )
-  }
-
   let params = {}
-  if (item._id) {
+  
+  if (item.id) {
     params = {
       method: 'put',
-      others: item._id
+      others: item.id
     }
   } else {
     params = {
@@ -74,20 +68,20 @@ const AddEdit = props => {
     }
   }
 
-  const onSubmit = ({ values, submit, resetForm }) => {
+  const onSubmit = ({ values, submit }) => {
     submit({ params: values })
-    resetForm()
+    setItem({})
   }
 
   return (
     <div className="AddEdit">
-      <Axios api="faqs" {...params} onSuccess={onSuccess}>
+      <Axios api="professional" {...params} onSuccess={onSuccess}>
         {({ submit }) => (
           <Formik
             {...schema}
             onSubmit={(values, event) => onSubmit({ ...event, values, submit })}
           >
-            {formik => (item._id ? edit(formik) : add(formik))}
+            {formik => (item.id ? edit(formik) : add(formik))}
           </Formik>
         )}
       </Axios>

@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 export default makeStyles(({ palette, typography }) => ({
   button: {
     fontSize: 16,
-    borderRadius: 10,
-    minWidth: '12rem',
+    minWidth: '10rem',
     width: 'fit-content',
     padding: '6px 25px',
     fontFamily: typography.fontSemiBold,

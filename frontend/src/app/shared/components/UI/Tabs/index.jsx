@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
+  hide: {
+    display: 'none'
+  },
   tabItem: {
     minHeight: 60,
     '& .MuiTab-wrapper': {
@@ -69,9 +72,11 @@ export default function TabsComponent({ tabs }) {
           )}
         </Tabs>
       </AppBar>
-      <TabPanel>
-        {tabs[value].component()}
-      </TabPanel>
+      {tabs.map((item, index) =>
+        <TabPanel key={index} className={value !== index ? classes.hide : ''}>
+          {item.content}
+        </TabPanel>
+      )}
     </div>
   );
 }

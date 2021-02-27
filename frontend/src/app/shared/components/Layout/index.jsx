@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import People from '@material-ui/icons/People';
 import CardTravel from '@material-ui/icons/CardTravel';
 
@@ -61,6 +61,19 @@ export default function Layout(props) {
               </ListItem>
             </Link>
           ))}
+        </List>
+        <Divider />
+        <List>
+          <Link to='/login'>
+            <ListItem button>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText className={classes.itemList}>
+                <Translate>LAYOUT_LIST_ITEM_TYPE_EXIT</Translate>
+              </ListItemText>
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
       <main className={classes.content}>

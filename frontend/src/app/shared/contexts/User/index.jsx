@@ -30,10 +30,11 @@ const UserProvider = props => {
 
 const UserValidate = props => {
   const history = useHistory()
+
   const isLogged = (item) => {
     const user = item()
-    const isPublic = true
-    // const isPublic = configs.Routes.Publics.indexOf(path) > -1
+    const { pathname } = props.location;
+    const isPublic = configs.routes.publics.indexOf(pathname) > -1
     if (user && !isPublic) {
       const expTime = parseInt(`${String(user.exp).toString()}000`, 0)
       if (Date.now() >= expTime) {
@@ -46,6 +47,7 @@ const UserValidate = props => {
     }
     return props.children
   }
+
   return <UserConsumer>{({user}) => isLogged(user)}</UserConsumer>
 }
 

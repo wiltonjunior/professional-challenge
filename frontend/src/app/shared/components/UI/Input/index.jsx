@@ -71,6 +71,7 @@ const Input = (props) => {
       case 'checkbox':
         return <CheckBox {...inputProps()} />
       case 'select':
+        return <Select {...inputProps()} />
       default: {
         if (mask) {
           return (

@@ -9,10 +9,7 @@ import {
   CircularProgress,
 } from '@material-ui/core'
 
-import { debounce } from 'lodash'
-
 import clsx from 'clsx'
-import Checkbox from '@material-ui/core/Checkbox'
 import React, { memo, useEffect, useState } from 'react'
 
 import Utils from '@utils'
@@ -23,16 +20,12 @@ import Toolbar from './components/Toolbar'
 
 import useStyles from './styles'
 
-const DEBOUNCE_TIME = 500
-
 const TableComponent = props => {
   const {
     loading,
     className,
     data = [],
     columns = [],
-    checkbox = '',
-    selected = [],
     customPagination,
   } = props
 
@@ -193,7 +186,7 @@ const TableComponent = props => {
         component="div"
         {...getParamsPaginator()}
         onChangePage={handleChangePage}
-        labelRowsPerPage="Rows per page"
+        labelRowsPerPage="Items por página"
         rowsPerPageOptions={[10, 25, 50, 100, 500]}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
