@@ -1,19 +1,46 @@
-import React from 'react'
+import React from "react";
 
-import './styles.scss'
+import Translate from "@UI/Translate";
+
+import "./styles.scss";
 
 const Card = (props) => {
-  const { close } = props
-  return (
-    <div className="Card">
-      <div onClick={close} className="card-header">
-        <h4 className="close">
-          Fechar <strong>X</strong>
-        </h4>
-      </div>
-      <div className="card-content">{props.children}</div>
-    </div>
-  )
-}
+  const {
+    title,
+    footer,
+    subtitle,
+    disabled,
+    component,
+    checkGroup,
+    params = {},
+    basic = false,
+  } = props;
 
-export default Card
+  const getComponent = () => {
+    if (component && !disabled) {
+      return <div className="card_component">{component()}</div>;
+    } else if (checkGroup) {
+      return <div className="card_component">{checkGroup()}</div>;
+    }
+  };
+
+  return (
+    <div className={`Card ${basic ? "basic" : ""}`}>
+      <div className="card_header">
+        <div className="title">
+          <h3>
+            <Translate>{title}</Translate>
+          </h3>
+          <span>
+            <Translate parameters={params.subtitle}>{subtitle}</Translate>
+          </span>
+        </div>
+        {getComponent()}
+      </div>
+      <div className="content">{props.children}</div>
+      {footer ? <div className="card_footer">{footer()}</div> : null}
+    </div>
+  );
+};
+
+export default Card;

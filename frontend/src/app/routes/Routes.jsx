@@ -16,9 +16,9 @@ export default () => (
         <UserConsumer>
           {({ user }) => (
             <Layout user={user} {...props}>
-              {/* <UserValidate {...props}> */}
+              <UserValidate {...props}>
                 <Route exact path="/professional" component={Professional} />
-              {/* </UserValidate> */}
+              </UserValidate>
             </Layout>
           )}
         </UserConsumer>

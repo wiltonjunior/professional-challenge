@@ -20,8 +20,8 @@
     bottom: 0px;
     opacity: 0.98;
     position: fixed;
-    background: radial-gradient(rgb(158, 182, 0), rgb(100, 115, 0));
-    background: -webkit-radial-gradient(rgb(158, 182, 0), rgb(100, 115, 0));
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
   }
   .image {
     top: 0px;
@@ -89,7 +89,7 @@
       position: absolute;
       border-radius: 50%;
       border: 4px solid #ffffff;
-      border-top-color: #8c8c8c;
+      border-top-color: #999;
     }
   }
 }

@@ -17,6 +17,9 @@ export default makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
   },
+  itemList: {
+    color: theme.palette.text.primary
+  },
   toolbar: {
     minHeight: 64,
     fontSize: 16,

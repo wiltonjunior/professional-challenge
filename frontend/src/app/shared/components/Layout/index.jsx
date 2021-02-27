@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom'
 
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
+import People from '@material-ui/icons/People';
+import CardTravel from '@material-ui/icons/CardTravel';
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -26,12 +24,12 @@ export default function Layout(props) {
 
   const router = [
     {
-      icon: () => <InboxIcon />,
+      icon: () => <People />,
       href: "professional",
       title: "LAYOUT_LIST_ITEM_PROFESSIONAL"
     },
     {
-      icon: () => <InboxIcon />,
+      icon: () => <CardTravel />,
       href: "type_professional",
       title: "LAYOUT_LIST_ITEM_TYPE_PROFESSIONAL"
     }
@@ -57,7 +55,7 @@ export default function Layout(props) {
             <Link to={item.href}>
               <ListItem button key={index}>
                 <ListItemIcon>{item.icon()}</ListItemIcon>
-                <ListItemText>
+                <ListItemText className={classes.itemList}>
                   <Translate>{item.title}</Translate>
                 </ListItemText>
               </ListItem>

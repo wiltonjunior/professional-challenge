@@ -1,29 +1,54 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 
-import { useHistory } from 'react-router-dom'
-
-import Config from '@configs'
-import Input from '@UI/Input'
-import Axios from '@UI/Axios'
-import Button from '@UI/Button'
-import Typography from '@UI/Typography'
 import Tabs from '@UI/Tabs'
+import Axios from '@UI/Axios'
 
-import * as Yup from 'yup'
-import { Formik } from 'formik'
+import List from './components/List'
+import AddEdit from './components/AddEdit'
 
 import useStyles from './styles';
 
-function Login() {
+function Professional() {
 
 	const classes = useStyles()
-	const history = useHistory()
+
+	const [run, setRun] = useState(1)
+	const [list, setList] = useState([])
+	const [item, setItem] = useState({})
+
+	const onSuccess = ({ data }) => {
+		setItem({})
+		setList([...data])
+	}
+
+	const updateList = () => {
+		setRun(run + 1)
+	}
+
+	const tabs = [
+		{
+			icon: "List",
+			title: "PROFESSIONAL_TABS_LIST",
+			component: () => <List list={list} setItem={setItem} updateList={updateList} />
+		},
+		{
+			icon: "AddIcon",
+			title: "PROFESSIONAL_TABS_ADD",
+			component: () => <AddEdit
+				item={item}
+				updateList={updateList}
+				close={() => setItem({})}
+			/>
+		}
+	]
 
 	return (
 		<section className={classes.root}>
-			<Tabs />
+			<Axios run={run} api="professional" onSuccess={onSuccess}>
+				<Tabs tabs={tabs} />
+			</Axios>
 		</section>
 	);
 }
 
-export default Login;
+export default Professional;

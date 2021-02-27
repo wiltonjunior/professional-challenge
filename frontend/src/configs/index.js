@@ -4,8 +4,8 @@ export default {
       login: {
         url: 'auth/login',
       },
-      managers: {
-        url: 'managers',
+      professional: {
+        url: 'professional',
       }
     },
   },

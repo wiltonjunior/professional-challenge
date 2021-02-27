@@ -8,6 +8,9 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
+import Icon from '@UI/Icon'
+import { i18n } from '@UI/Translate'
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -32,9 +35,24 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
+  tabItem: {
+    minHeight: 60,
+    '& .MuiTab-wrapper': {
+      fontSize: 13,
+      display: 'flex',
+      flexDirection: 'row',
+      '& .Icon': {
+        margin: 0,
+        marginRight: 10,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }
+    }
+  }
 }));
 
-export default function SimpleTabs() {
+export default function TabsComponent({ tabs }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -46,19 +64,13 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+          {tabs.map((item, index) =>
+            <Tab key={index} className={classes.tabItem} icon={<Icon name={item.icon} />} label={i18n.t(item.title)} />
+          )}
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+      <TabPanel>
+        {tabs[value].component()}
       </TabPanel>
     </div>
   );

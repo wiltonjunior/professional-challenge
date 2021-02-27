@@ -24,11 +24,14 @@ function Login() {
 
 	const schema = {
 		enableReinitialize: true,
-		initialValues: {},
+		initialValues: {
+			email: 'ana@gmail.com',
+			password: '12345'
+		},
 		validationSchema: Yup.object().shape({
 			email: Yup.string()
 				.required('REQUIRED')
-				.email(),
+				.email('REQUIRED'),
 			password: Yup.string().required('REQUIRED')
 		})
 	}
@@ -38,7 +41,7 @@ function Login() {
 		history.push(`/professional`)
 	}
 
-	const setToken = token => {
+	const setToken = ({ token }) => {
 		sessionStorage.setItem(Config.TokenSession, token)
 	}
 
