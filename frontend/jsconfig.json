@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "@i18n/*": ["src/i18n/*"],
+      "@configs/*": ["src/configs/*"],
+      "@assets/*": ["src/assets/*"],
+      "@scss/*": ["src/assets/scss/*"],
+      "@images/*": ["src/assets/images/*"],
+      "@pages/*": ["src/app/pages/*"],
+      "@routes/*": ["src/app/routes/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@utils/*": ["src/app/shared/utils/*"],
+      "@components/*": ["src/app/shared/components/*"],
+      "@constants/*": ["src/app/shared/constants/*"],
+      "@contexts/*": ["src/app/shared/contexts/*"],
+      "@services/*": ["src/app/shared/services/*"],
+      "underscore": ["lodash"]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import 'src/assets/sass/variables.scss';
+
+.Card {
+  backdrop-filter: blur(5px);
+  .card-header {
+    cursor: pointer;
+    padding: .8rem 2rem;
+    width: fit-content;
+    border: solid 2px $blue;
+    border-bottom: none;
+    h4{
+      margin: 0;
+      color: $white;
+      strong{        
+        color: $blue;
+      }
+    }
+  }
+  .card-content {
+    padding: 1rem;
+    border: solid 2px $blue;
+  }
+}
+
+@media #{$max-media-mobile} {
+  .Card {
+  }
+}

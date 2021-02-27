@@ -13,7 +13,8 @@
     "db:migrate": "sequelize db:migrate",
     "db:populate": "sequelize db:seed:all",
     "db:undo": "sequelize db:migrate:undo:all",
-    "db:reset": "npm run db:undo && npm run db:migrate && npm run db:populate"
+    "db:reset": "npm run db:undo && npm run db:migrate && npm run db:populate",
+    "deploy": "git subtree push --prefix output heroku master"
   },
   "repository": "https://github.com/wiltonjunior/professional-challenge.git",
   "author": "wiltonjunior2010@gmail.com",

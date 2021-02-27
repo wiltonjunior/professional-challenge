@@ -1,0 +1,95 @@
+@import 'src/assets/sass/variables.scss';
+
+.Load {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  opacity: 1;
+  bottom: 0px;
+  margin: auto;
+  display: flex;
+  z-index: 99999;
+  align-items: center;
+  transition-duration: 100ms;
+  transition-property: all;
+  .background {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0.98;
+    position: fixed;
+    background: radial-gradient(rgb(158, 182, 0), rgb(100, 115, 0));
+    background: -webkit-radial-gradient(rgb(158, 182, 0), rgb(100, 115, 0));
+  }
+  .image {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    color: #fff;
+    h5 {
+      display: flex;
+      margin: 0px;
+      font-size: 20px;
+      text-transform: uppercase;
+      justify-content: center;
+    }
+    .lds-css {
+      margin: calc(50vh - 100px) calc(50vw - 50px) 0px;
+    }
+  }
+}
+
+@keyframes lds-rolling {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-rolling {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.LoadImage {
+  .lds-rolling {
+    height: 100px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    div {
+      top: 50%;
+      left: 50%;
+      -webkit-animation: lds-rolling 3.4s linear infinite;
+      animation: lds-rolling 1s linear infinite;
+    }
+
+    div:after {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+
+    div,
+    div:after {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      border-radius: 50%;
+      border: 4px solid #ffffff;
+      border-top-color: #8c8c8c;
+    }
+  }
+}
