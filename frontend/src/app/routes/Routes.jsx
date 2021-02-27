@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from '@pages/Login'
 import NotFound from '@pages/NotFound'
 import Professional from '@pages/Professional'
+import TypeProfessional from '@pages/TypeProfessional'
 
 import Layout from '@components/Layout'
 import { UserValidate, UserConsumer } from '@contexts/User'
@@ -18,6 +19,7 @@ export default () => (
             <Layout user={user} {...props}>
               <UserValidate {...props}>
                 <Route exact path="/professional" component={Professional} />
+                <Route exact path="/type_professional" component={TypeProfessional} />
               </UserValidate>
             </Layout>
           )}
