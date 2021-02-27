@@ -28,6 +28,7 @@ const FormGroup = props => {
             name="phone"
             onBlur={handleBlur}
             onChange={handleChange}
+            mask="(99) 9 9999-9999"
             value={Utils.getValue(values, 'phone')}
             error={Utils.getValue(errors, 'phone')}
             helperText={Utils.getValue(errors, 'phone')}

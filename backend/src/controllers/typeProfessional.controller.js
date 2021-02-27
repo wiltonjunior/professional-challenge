@@ -23,7 +23,7 @@ class TypeProfessionalController {
     try {
       const { id } = req.params;
       const response = await TypeProfessional.findByPk(id);
-      if (!response) res.status(404).json({ message: "MANAGER_NOT_FOUND" });
+      if (!response) res.status(404).json({ message: "PROFESSIONAL_NOT_FOUND" });
       return res.status(200).json({ data: response });
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -33,6 +33,15 @@ class TypeProfessionalController {
   async update({ body, params }, res) {
     try {
       const { id } = params;
+      const { description, phone, situation } = body;
+      const response = await Professional.findByPk(id);
+      if (!response) {
+        return res.status(404).json({ message: "PROFESSIONAL_NOT_FOUND" });
+      }
+      response.description = description;
+      response.phone = phone;
+      response.situation = situation;
+      await response.save();
       return res.status(200).json({ data: body });
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -43,7 +52,7 @@ class TypeProfessionalController {
     try {
       const { id } = req.params;
       const response = await TypeProfessional.findByPk(id);
-      if (!response) res.status(404).json({ message: "MANAGER_NOT_FOUND" });
+      if (!response) res.status(404).json({ message: "PROFESSIONAL_NOT_FOUND" });
       await response.destroy();
       return res.status(204).end();
     } catch (error) {
