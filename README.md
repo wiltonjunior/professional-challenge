@@ -56,7 +56,7 @@ O frontend da aplicação foi desenvolvido utilizando o framework ReactJs, justa
 
 O deploy do frontend foi realizado utilizando o serviço de hospedagem heroku, para acessar basta clicar no link abaixo
 
-[https://professional-challenge-web.herokuapp.com/api/v1](https://professional-challenge-web.herokuapp.com/api/v1)
+[https://professional-challenge-web.herokuapp.com](https://professional-challenge-web.herokuapp.com)
 
 #### Login
 
