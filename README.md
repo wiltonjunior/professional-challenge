@@ -1,11 +1,28 @@
-# Contexto :game_die:
+# Professional Challenge :game_die:
 
-Em todo aplicativo comercial temos um controle dos profissinais envolvidos no processo sejam usuários, responsáveis, gerentes, administradores, operadores, etc. Por isso um ponto importante de qualquer aplicação é permitir designarmos estas funções ou seja categorizar em tipos estes profissionais.  Ex.: ProfissionalAna = Médica, José = Professor... 
+Aplicação criada com o objetivo de categorizar reponsabilidade os profissinais envolvidos no processo da aplicação. 
 
 Vamos criar então uma aplicação que nos permita consultar, criar e editar essas informações e manter essa relação entre o profissional e seu tipo.
 
-## Modelo de dados :memo:
-### Tipo de profissional
+### BackEnd
+
+O backend foi desenvolvido utilizando a arquitetura rest com o nodejs como plataforma de desenvolvimento, consumindo um banco de dados postgresSQL.
+
+#### Deploy
+
+O deploy do backend foi realizado utilizando o serviço de hospedagem heroku, para acessar basta clicar no link abaixo
+
+[https://professional-challenge-api.herokuapp.com/api/v1](https://professional-challenge-api.herokuapp.com/api/v1)
+
+#### Documentação
+O backend foi documentado utilizando a biblioteca swagger, justamente com todos os endpoints. Para acessar a documentação basta clicar no [link](https://professional-challenge-api.herokuapp.com/doc).
+
+Link local
+http://locahost:4000/doc
+
+#### Modelo de dados :memo:
+
+##### Tipo de profissional
 ```js
 {
   "id": xxx,                  // ID 
@@ -17,7 +34,7 @@ Vamos criar então uma aplicação que nos permita consultar, criar e editar ess
 }
 ```
 
-### Profissional
+##### Profissional
 ```js
 {
     "id": xxx,                   // ID
@@ -31,3 +48,19 @@ Vamos criar então uma aplicação que nos permita consultar, criar e editar ess
 }
 ```
 
+### FrontEnd
+
+O frontend da aplicação foi desenvolvido utilizando o framework ReactJs, justamente com o Material UI para auxiliar na construção da interface.
+
+#### Deploy
+
+O deploy do frontend foi realizado utilizando o serviço de hospedagem heroku, para acessar basta clicar no link abaixo
+
+[https://professional-challenge-web.herokuapp.com/api/v1](https://professional-challenge-web.herokuapp.com/api/v1)
+
+#### Login
+
+Para acessar a aplicação, foi disponibilizado um usuário de serviço previamente cadastrado. Para realizar a consulta no banco e gerar o token de acesso.
+
+Usuário: ana@gmail.com
+Senha: 12345
