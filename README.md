@@ -8,6 +8,40 @@ Vamos criar então uma aplicação que nos permita consultar, criar e editar ess
 
 O backend foi desenvolvido utilizando a arquitetura rest com o nodejs como plataforma de desenvolvimento, consumindo um banco de dados postgresSQL.
 
+#### Iniciando o projeto
+
+Para inicar o projeto é necessário startar um postgressSQL, caso não tenha em sua máquina local, basta execultar o docker-compose disponível na raiz do projeto backend.
+
+```sh
+docker-compose up -b
+```
+
+Dessa forma o postgressSQL ira iniciar em sua máquina, funcionando na porta 5432, juntamente com um pgadmin funcionando na porta 80 para a visualização e tratamento desses dados.
+
+Após essa configuração, é necessário criar o banco de dados, para isso, utilize o seguinte comando.
+
+```sh
+yarn db:create
+```
+
+Para criar as tabelas
+
+```sh
+yarn db:migrate
+```
+
+Para popular as tabelas com algumas informações
+
+```sh
+yarn db:populate
+```
+
+Para inicar a aplicação é necessário: 
+
+```sh
+yarn start
+```
+
 #### Deploy
 
 O deploy do backend foi realizado utilizando o serviço de hospedagem heroku, para acessar basta clicar no link abaixo
@@ -51,6 +85,17 @@ http://locahost:4000/doc
 ### FrontEnd
 
 O frontend da aplicação foi desenvolvido utilizando o framework ReactJs, justamente com o Material UI para auxiliar na construção da interface.
+
+#### Iniciando o projeto
+
+Para inicar o projeto é necessário realizar alguns comandos, são eles:
+
+```sh
+yarn intall
+yarn start
+```
+
+Cado seja necessário realizar a mudança do endpoint de consulta, basta modificar a variável de ambiente chamada REACT_APP_API_URL, ela se encontra disponivel no .env da aplicação.
 
 #### Deploy
 
