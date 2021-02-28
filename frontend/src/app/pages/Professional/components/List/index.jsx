@@ -8,7 +8,7 @@ import Icon from '@UI/Icon'
 import Table from '@UI/Table'
 import { i18n } from '@UI/Translate'
 
-const List = ({ list = [], setItem, updateList }) => {
+const List = ({ list = [], setItem, updateList, loading, onInitLoad, onFinishLoad }) => {
 
   const columns = [
     { title: 'PROFESSIONAL_LIST_NAME', field: 'name' },
@@ -27,16 +27,19 @@ const List = ({ list = [], setItem, updateList }) => {
       title: 'PROFESSIONAL_LIST_OPTIONS',
       className: 'options',
       component: item => {
-        return (
+        return ( 
           <>
             <IconButton onClick={() => setItem({ ...item })} className="list-edit">
               <Icon size={30} name="Edit" />
             </IconButton>
             <Axios
+              loading={false}
               api="professional"
               method="delete"
               others={item.id}
               onSuccess={updateList}
+              onInitLoad={onInitLoad}
+              onFinishLoad={onFinishLoad}
             >
               {({ submit }) => (
                 <IconButton onClick={submit} className="list-delete">
@@ -51,7 +54,7 @@ const List = ({ list = [], setItem, updateList }) => {
   ]
 
   return (
-    <Table data={list} columns={columns} title="PROFESSIONAL_LIST_TABLE_TITLE" />
+    <Table loading={loading} data={list} columns={columns} title="PROFESSIONAL_LIST_TABLE_TITLE" />
   )
 }
 

@@ -15,6 +15,7 @@ function TypeProfessional() {
 	const [run, setRun] = useState(1)
 	const [list, setList] = useState([])
 	const [item, setItem] = useState({})
+	const [loading, setLoading] = useState(false)
 
 	const onSuccess = ({ data }) => {
 		setItem({})
@@ -33,11 +34,26 @@ function TypeProfessional() {
 		})
 	}
 
+	const onInitLoad = () => {
+		setLoading(true)
+	}
+
+	const onFinishLoad = () => {
+		setLoading(false)
+	}
+
 	const tabs = [
 		{
 			icon: "List",
 			title: "TYPE_PROFESSIONAL_TABS_LIST",
-			content: <List list={list} setItem={setItem} updateList={updateList} />
+			content: <List
+				list={list}
+				loading={loading}
+				setItem={setItem}
+				updateList={updateList}
+				onInitLoad={onInitLoad}
+				onFinishLoad={onFinishLoad}
+			/>
 		},
 		{
 			icon: "AddIcon",
@@ -53,7 +69,7 @@ function TypeProfessional() {
 
 	return (
 		<section className={classes.root}>
-			<Axios run={run} api="type-professional" onSuccess={onSuccess}>
+			<Axios loading={false} run={run} api="type-professional" onSuccess={onSuccess}  onInitLoad={onInitLoad} onFinishLoad={onFinishLoad}>
 				<Tabs tabs={tabs} />
 			</Axios>
 		</section>

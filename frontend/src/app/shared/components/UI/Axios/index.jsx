@@ -63,17 +63,20 @@ const Axios = (props) => {
 
   const submit = async (data) => {
     const { params } = data || {}
-    const { onRequest, message } = props
+    const { onRequest, onInitLoad, onFinishLoad, message } = props
     if (params) props = { ...props, params }
     showLoad(typeof message === 'string' ? message : true)
     try {
       onRequest()
+      onInitLoad()
       const response = (await http(props)) || {}
       onRequest()
       success(response)
+      onFinishLoad()
     } catch (err) {
       onRequest()
       showLoad(false)
+      onFinishLoad()
       error(err)
     }
   }
@@ -100,6 +103,8 @@ Axios.defaultProps = {
   onError: () => true,
   onSuccess: () => true,
   onRequest: () => true,
+  onInitLoad: () => true,
+  onFinishLoad: () => true,
 }
 
 const http = async ({ token, api, params, others, method = 'get' }) => {

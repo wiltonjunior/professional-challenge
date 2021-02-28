@@ -16,6 +16,7 @@ function Professional() {
 	const [list, setList] = useState([])
 	const [item, setItem] = useState({})
 	const [listType, setListType] = useState([])
+	const [loading, setLoading] = useState(false)
 
 	const onSuccess = ({ data }) => {
 		setItem({})
@@ -30,6 +31,13 @@ function Professional() {
 		setListType([...data])
 	}
 
+	const onInitLoad = () => {
+		setLoading(true)
+	}
+	const onFinishLoad = () => {
+		setLoading(false)
+	}
+
 	const close = () => {
 		setItem({
 			name: '',
@@ -42,35 +50,39 @@ function Professional() {
 	}
 
 	const tabs = [
-			{
-				icon: "List",
-				title: "PROFESSIONAL_TABS_LIST",
-				content: <List list={list} setItem={setItem} updateList={updateList} />
-			},
-			{
-				icon: "AddIcon",
-				title: "PROFESSIONAL_TABS_ADD",
-				content: <AddEdit
-					item={item}
-					close={close}
-					setItem={setItem}
-					listType={listType}
-					updateList={updateList}
-				/>
-			}
-		]
+		{
+			icon: "List",
+			title: "PROFESSIONAL_TABS_LIST",
+			content: <List
+				list={list}
+				loading={loading}
+				setItem={setItem}
+				onInitLoad={onInitLoad}
+				onFinishLoad={onFinishLoad}
+				updateList={updateList} />
+		},
+		{
+			icon: "AddIcon",
+			title: "PROFESSIONAL_TABS_ADD",
+			content: <AddEdit
+				item={item}
+				close={close}
+				setItem={setItem}
+				listType={listType}
+				updateList={updateList}
+			/>
+		}
+	]
 
-
-
-		return (
-			<section className={classes.root}>
-				<Axios run api="type-professional" onSuccess={onSuccessType}>
-					<Axios run={run} api="professional" onSuccess={onSuccess}>
-						<Tabs tabs={tabs} />
-					</Axios>
+	return (
+		<section className={classes.root}>
+			<Axios loading={false} run api="type-professional" onSuccess={onSuccessType} onInitLoad={onInitLoad} onFinishLoad={onFinishLoad}>
+				<Axios loading={false} run={run} api="professional" onSuccess={onSuccess} onInitLoad={onInitLoad} onFinishLoad={onFinishLoad}>
+					<Tabs tabs={tabs} />
 				</Axios>
-			</section>
-		);
-	}
+			</Axios>
+		</section>
+	);
+}
 
-	export default Professional;
+export default Professional;

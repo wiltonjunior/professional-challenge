@@ -8,13 +8,13 @@ import Icon from '@UI/Icon'
 import Table from '@UI/Table'
 import { i18n } from '@UI/Translate'
 
-const List = ({ list = [], setItem, updateList }) => {
+const List = ({ list = [], setItem, updateList ,  loading, onInitLoad, onFinishLoad}) => {
 
   const columns = [
     { title: 'TYPE_PROFESSIONAL_LIST_NAME', field: 'description' },
     { title: 'TYPE_PROFESSIONAL_LIST_PHONE', field: 'phone' },
     {
-      title: 'TYPE_PROFESSIONAL_LIST_SITUATION', field: 'situation',
+      title: 'TYPE_PROFESSIONAL_LIST_SITUATION', field: 'situation', 
       component: ({ situation }) => {
         const color = situation ? 'primary' : 'secondary'
         const value = situation ? 'TYPE_PROFESSIONAL_LIST_SITUATION_ACTIVE' : 'TYPE_PROFESSIONAL_LIST_SITUATION_NOT_ACTIVE'
@@ -31,10 +31,13 @@ const List = ({ list = [], setItem, updateList }) => {
               <Icon size={30} name="Edit" />
             </IconButton>
             <Axios
-              api="type-professional"
+              loading={false}
               method="delete"
               others={item.id}
+              api="type-professional"
               onSuccess={updateList}
+              onInitLoad={onInitLoad}
+              onFinishLoad={onFinishLoad}
             >
               {({ submit }) => (
                 <IconButton onClick={submit} className="list-delete">
@@ -49,7 +52,7 @@ const List = ({ list = [], setItem, updateList }) => {
   ]
 
   return (
-    <Table data={list} columns={columns} title="TYPE_PROFESSIONAL_LIST_TABLE_TITLE" />
+    <Table  loading={loading} data={list} columns={columns} title="TYPE_PROFESSIONAL_LIST_TABLE_TITLE" />
   )
 }
 
