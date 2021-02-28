@@ -18,7 +18,6 @@ const AddEdit = props => {
     initialValues: { situation: false, ...item },
     validationSchema: Yup.object().shape({
       name: Yup.string().required('REQUIRED'),
-      phone: Yup.string().required('REQUIRED'),
       password: Yup.string().required('REQUIRED'),
       typeProfessionalId: Yup.number().required('REQUIRED'),
       email: Yup.string().email('REQUIRED').required('REQUIRED'),

@@ -1,0 +1,429 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Professional Challenge",
+    "description": "Documentation application professional challenge"
+  },
+  "host": "localhost:4000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Professional",
+      "description": "Endpoints"
+    },
+    {
+      "name": "TypeProfessional",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    },
+    "petstore_auth": {
+      "type": "jwt"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "token": "token"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/professional/": {
+      "get": {
+        "tags": [
+          "Professional"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Get all professional",
+            "schema": {
+              "$ref": "#/definitions/getProfessional"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Professional"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Create professional",
+            "schema": {
+              "$ref": "#/definitions/getProfessional"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/professional/{id}": {
+      "get": {
+        "tags": [
+          "Professional"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get one professional",
+            "schema": {
+              "$ref": "#/definitions/oneProfessional"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Professional"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update by id professional",
+            "schema": {
+              "$ref": "#/definitions/oneProfessional"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Professional"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/type-professional/": {
+      "get": {
+        "tags": [
+          "TypeProfessional"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Get all professional",
+            "schema": {
+              "$ref": "#/definitions/getTypeProfessional"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TypeProfessional"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Create professional",
+            "schema": {
+              "$ref": "#/definitions/oneTypeProfessional"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/type-professional/{id}": {
+      "get": {
+        "tags": [
+          "TypeProfessional"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get one professional",
+            "schema": {
+              "$ref": "#/definitions/oneTypeProfessional"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TypeProfessional"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update by id professional",
+            "schema": {
+              "$ref": "#/definitions/oneTypeProfessional"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TypeProfessional"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "professional": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Jhon Doe"
+        },
+        "phone": {
+          "type": "string",
+          "example": "(99) 9 9999-9999"
+        },
+        "email": {
+          "type": "string",
+          "example": "Jhon@email.com"
+        },
+        "situation": {
+          "type": "boolean",
+          "example": false
+        },
+        "typeProfessionalId": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "situation",
+        "typeProfessionalId"
+      ]
+    },
+    "typeProfessional": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "Professional"
+        },
+        "phone": {
+          "type": "string",
+          "example": "(99) 9 9999-9999"
+        },
+        "situation": {
+          "type": "boolean",
+          "example": false
+        }
+      },
+      "required": [
+        "description",
+        "situation"
+      ]
+    },
+    "getTypeProfessional": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/typeProfessional"
+      }
+    },
+    "oneTypeProfessional": {
+      "$ref": "#/definitions/typeProfessional"
+    },
+    "getProfessional": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/professional"
+      }
+    },
+    "oneProfessional": {
+      "$ref": "#/definitions/professional"
+    }
+  }
+}

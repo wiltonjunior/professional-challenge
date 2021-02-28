@@ -5,8 +5,13 @@ const { Professional } = require("../models");
 const { generateToken } = require("../helpers/request.helper");
 
 class LoginController {
-
   async login(req, res) {
+    /*
+      #swagger.tags = ['Auth']
+      #swagger.responses[200] = {
+        token: 'token'
+      }
+    */
     try {
       const { email, password } = req.body;
       const user = await Professional.findOne({ where: { email }, attributes: { include: ["password"] } });
@@ -23,7 +28,6 @@ class LoginController {
       return res.status(500).json({ error: error.message });
     }
   }
-
 }
 
 module.exports = new LoginController();

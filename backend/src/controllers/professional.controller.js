@@ -2,8 +2,14 @@ const bcryptjs = require("bcryptjs");
 const { TypeProfessional, Professional } = require("../models");
 
 class ProfessionalController {
-
   async index(req, res) {
+    /*
+      #swagger.tags = ['Professional']
+      #swagger.responses[200] = {
+        description: "Get all professional",
+        schema: { $ref: "#/definitions/getProfessional" }
+      }
+    */
     try {
       const response = await Professional.findAll({
         include: [
@@ -19,13 +25,18 @@ class ProfessionalController {
     }
   }
 
-  async store({ body }, res) {
+  async store(req, res) {
+    /*
+      #swagger.tags = ['Professional']
+      #swagger.responses[200] = {
+        description: "Create professional",
+        schema: { $ref: "#/definitions/getProfessional" }
+      }
+    */
+    const { body } = req;
     try {
-
-      const user = await Professional.findOne({ where: { email: body.email }})
-
+      const user = await Professional.findOne({ where: { email: body.email } })
       if (user) res.status(409).json({ message: "PROFESSIONAL_EMAIL_CONNFLICT" });
-
       const password = await bcryptjs.hashSync(body.password, 10);
       const response = await Professional.create(
         {
@@ -40,6 +51,13 @@ class ProfessionalController {
   }
 
   async read(req, res) {
+    /*
+      #swagger.tags = ['Professional']
+      #swagger.responses[200] = {
+        description: "Get one professional",
+        schema: { $ref: "#/definitions/oneProfessional" }
+      }
+    */
     try {
       const { id } = req.params;
       const response = await Professional.findByPk(id);
@@ -50,10 +68,17 @@ class ProfessionalController {
     }
   }
 
-  async update({ body, params }, res) {
+  async update(req, res) {
+    /*
+      #swagger.tags = ['Professional']
+      #swagger.responses[200] = {
+        description: "Update by id professional",
+        schema: { $ref: "#/definitions/oneProfessional" }
+      }
+    */
     try {
-      const { id } = params;
-      const { name, email, password, phone, situation } = body;
+      const { id } = req.params;
+      const { name, email, password, phone, situation } = req.body;
       const response = await Professional.findByPk(id);
       if (!response) {
         return res.status(404).json({ message: "PROFESSIONAL_NOT_FOUND" });
@@ -71,6 +96,10 @@ class ProfessionalController {
   }
 
   async delete(req, res) {
+    /*
+      #swagger.tags = ['Professional']
+      #swagger.responses[200] = ok
+    */
     try {
       const { id } = req.params;
       const response = await Professional.findByPk(id);

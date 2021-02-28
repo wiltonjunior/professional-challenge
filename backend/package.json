@@ -8,6 +8,7 @@
     "commit": "cz",
     "lint": "eslint src/",
     "prd": "node src/server.js",
+    "swagger": "node swagger.js",
     "start": "nodemon src/server.js",
     "db:create": "sequelize db:create",
     "db:migrate": "sequelize db:migrate",
@@ -30,7 +31,9 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "4.17.20",
     "pg": "^8.5.1",
-    "sequelize": "6.3.5"
+    "sequelize": "6.3.5",
+    "swagger-autogen": "^2.6.8",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "cz-conventional-changelog": "3.3.0",
