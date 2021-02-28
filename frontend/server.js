@@ -1,11 +1,14 @@
-require('dotenv').config()
-
+const path = require('path');
 const express = require('express');
+
 const app = express();
 
-const baseDir = `${__dirname}/build/`
-app.use(express.static(`${baseDir}`))
-app.get('/', (req, res) => res.sendfile('index.html', { root: baseDir }))
-const port = parseInt(process.env.PORT, 3000) || 6000
+const port = process.env.PORT || 3000;
 
-app.listen(port)
+const publicPath = path.join(__dirname, 'build');
+
+app.use(express.static(publicPath));
+
+app.listen(port, () => {
+   console.log(`Server is up on port ${port}!`);
+});
