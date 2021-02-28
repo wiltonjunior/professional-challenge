@@ -25,6 +25,13 @@ function TypeProfessional() {
 		setRun(run + 1)
 	}
 
+	const close = () => {
+		setItem({
+			email: '',
+			description: '',
+		})
+	}
+
 	const tabs = [
 		{
 			icon: "List",
@@ -36,9 +43,9 @@ function TypeProfessional() {
 			title: "TYPE_PROFESSIONAL_TABS_ADD",
 			content: <AddEdit
 				item={item}
+				close={close}
 				setItem={setItem}
 				updateList={updateList}
-				close={() => setItem({})}
 			/>
 		}
 	]

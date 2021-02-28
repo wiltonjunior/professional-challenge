@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "professional-challenge",
   "scripts": {
-    "start": "cd backend && npm start"
+    "backend": "git subtree push --prefix backend heroku master"
   },
   "repository": "https://github.com/wiltonjunior/professional-challenge.git",
   "author": "wiltonjunior2010@gmail.com",

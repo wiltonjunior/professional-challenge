@@ -4,6 +4,8 @@ export default {
   ROUTER_PROFESSIONAL: "Profissionais",
   ROUTER_TYPE_PROFESSIONAL: "Tipo de Profissional",
 
+  PROFESSIONAL_EMAIL_CONNFLICT: "Usuário já cadastro",
+
   TABLE_NO_DATA: "Lista Fazia",
 
   LOGIN_FORM_BUTTON: "Enviar",

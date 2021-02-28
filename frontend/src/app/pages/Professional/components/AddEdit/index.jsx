@@ -11,7 +11,7 @@ import FormGroup from './components/FormGroup'
 
 const AddEdit = props => {
 
-  let { close, item, setItem, updateList } = props
+  let { close, item, updateList } = props
   
   const schema = {
     enableReinitialize: true,
@@ -55,6 +55,16 @@ const AddEdit = props => {
     )
   }
 
+  const onSubmit = ({ values, submit, resetForm, setFieldValue }) => {
+    submit({ params: values })
+    resetForm()
+    setFieldValue('name', '');
+    setFieldValue('phone', '');
+    setFieldValue('email', '');
+    setFieldValue('password', '');
+    setFieldValue('typeProfessionalId', '');
+  }
+
   let params = {}
   
   if (item.id) {
@@ -66,11 +76,6 @@ const AddEdit = props => {
     params = {
       method: 'post'
     }
-  }
-
-  const onSubmit = ({ values, submit }) => {
-    submit({ params: values })
-    setItem({})
   }
 
   return (

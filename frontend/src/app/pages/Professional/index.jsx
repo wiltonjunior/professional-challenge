@@ -30,34 +30,46 @@ function Professional() {
 		setListType([...data])
 	}
 
+	const close = () => {
+		setItem({
+			name: '',
+			email: '',
+			phone: '',
+			password: '',
+			typeProfessionalId: '',
+		})
+	}
+
 	const tabs = [
-		{
-			icon: "List",
-			title: "PROFESSIONAL_TABS_LIST",
-			content: <List list={list} setItem={setItem} updateList={updateList} />
-		},
-		{
-			icon: "AddIcon",
-			title: "PROFESSIONAL_TABS_ADD",
-			content: <AddEdit
-				item={item}
-				setItem={setItem}
-				listType={listType}
-				updateList={updateList}
-				close={() => setItem({})}
-			/>
-		}
-	]
+			{
+				icon: "List",
+				title: "PROFESSIONAL_TABS_LIST",
+				content: <List list={list} setItem={setItem} updateList={updateList} />
+			},
+			{
+				icon: "AddIcon",
+				title: "PROFESSIONAL_TABS_ADD",
+				content: <AddEdit
+					item={item}
+					close={close}
+					setItem={setItem}
+					listType={listType}
+					updateList={updateList}
+				/>
+			}
+		]
 
-	return (
-		<section className={classes.root}>
-			<Axios run api="type-professional" onSuccess={onSuccessType}>
-				<Axios run={run} api="professional" onSuccess={onSuccess}>
-					<Tabs tabs={tabs} />
+
+
+		return (
+			<section className={classes.root}>
+				<Axios run api="type-professional" onSuccess={onSuccessType}>
+					<Axios run={run} api="professional" onSuccess={onSuccess}>
+						<Tabs tabs={tabs} />
+					</Axios>
 				</Axios>
-			</Axios>
-		</section>
-	);
-}
+			</section>
+		);
+	}
 
-export default Professional;
+	export default Professional;

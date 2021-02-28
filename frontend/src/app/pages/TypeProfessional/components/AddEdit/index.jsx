@@ -65,9 +65,11 @@ const AddEdit = props => {
     }
   }
 
-  const onSubmit = ({ values, submit }) => {
+  const onSubmit = ({ values, submit, setFieldValue }) => {
     submit({ params: values })
     setItem({})
+    setFieldValue('phone', '');
+    setFieldValue('description', '');
   }
 
   return (
