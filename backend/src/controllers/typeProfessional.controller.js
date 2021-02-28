@@ -12,7 +12,8 @@ class TypeProfessionalController {
 
   async store({ body }, res) {
     try {
-      const response = await TypeProfessional.create(body);
+      const { description, phone, situation } = body;
+      const response = await TypeProfessional.create({ description, phone, situation });
       return res.status(201).json({ data: response });
     } catch (error) {
       return res.status(500).json({ error: error.message });

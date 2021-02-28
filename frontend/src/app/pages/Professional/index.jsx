@@ -36,6 +36,7 @@ function Professional() {
 			email: '',
 			phone: '',
 			password: '',
+			situation: false,
 			typeProfessionalId: '',
 		})
 	}

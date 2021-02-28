@@ -62,6 +62,7 @@ const AddEdit = props => {
     setFieldValue('phone', '');
     setFieldValue('email', '');
     setFieldValue('password', '');
+    setFieldValue('situation', false);
     setFieldValue('typeProfessionalId', '');
   }
 

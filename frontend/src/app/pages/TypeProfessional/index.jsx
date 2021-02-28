@@ -27,8 +27,9 @@ function TypeProfessional() {
 
 	const close = () => {
 		setItem({
-			email: '',
+			phone: '',
 			description: '',
+			situation: false,
 		})
 	}
 
